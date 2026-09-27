@@ -1,0 +1,78 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand: #1e3a8a;
+  --page-bg: #f4f4f4;
+  --card-bg: white;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+  background-color: var(--page-bg);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+}
+h1 { font-size: 2rem; color: var(--brand); }
+h2 { font-size: 1.5rem; color: var(--brand); }
+h3 { color: var(--brand); }
+
+p { line-height: 1.5; }
+
+ul { list-style: none; }
+
+a { text-decoration: none; }
+
+/* A8: Link states declared in LVHA order — Link, Visited, Hover, Active.
+   All four have equal specificity (0,1,0), so when more than one could
+   match the same link at once, CSS falls back to source order and the
+   LAST rule wins. A hovered, visited link matches both :visited and
+   :hover — if :visited were written after :hover, its color would always
+   win and the link could never show a hover effect once visited. Putting
+   :hover after :visited (and :active last, since it's the most fleeting,
+   user-driven state) guarantees each state can still be seen when it's
+   the one currently happening. :focus is added alongside :hover for
+   keyboard accessibility. */
+a:link { color: var(--brand); }
+a:visited { color: purple; }
+a:hover { text-decoration: underline; }
+a:focus { outline: 3px solid orange; }
+a:active { color: darkred; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip:focus {
+  left: 10px;
+  top: 10px;
+  background: white;
+  padding: 10px;
+  z-index: 10;
+}
+
+input, select {
+  padding: 8px 12px; /* padding shorthand */
+  border: 2px solid gray; /* border shorthand */
+  margin: 5px 0; /* margin shorthand */
+}
+button {
+  padding: 10px 20px;
+  border: 0;
+  background-color: var(--brand);
+  color: white;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+}

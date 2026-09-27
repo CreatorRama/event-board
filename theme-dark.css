@@ -1,0 +1,76 @@
+
+
+:root {
+  --brand: #93c5fd;
+  --page-bg: #111827;
+  --card-bg: #1f2937;
+}
+
+/* A9: uses the .site-header class, not the #site-header id — see the
+   note in style.css for why ID selectors were dropped for styling */
+.site-header {
+  background-color: var(--brand);
+  padding: 20px;
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #f9fafb;
+  background-color: var(--page-bg);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--brand);
+}
+
+main { padding: 20px; }
+
+section {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: var(--card-bg);
+}
+
+.events {
+  border: 2px solid gray;
+}
+
+article, details {
+  background-color: #374151;
+  border: 1px solid gray;
+  margin: 10px 0;
+  padding: 15px;
+}
+
+.site-header, footer {
+  background-color: #030712;
+  color: #f9fafb;
+  padding: 20px;
+}
+
+nav a, .site-header a, footer a {
+  color: #f9fafb;
+}
+
+input, select {
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 8px 12px;
+  border: 2px solid gray;
+}
+
+button {
+  background-color: var(--brand);
+  color: #111827;
+  padding: 10px 20px;
+}
+
+.notification {
+  background-image: url("download.png");
+  background-size: 120px;
+  background-position: right center;
+  background-repeat: no-repeat;
+}

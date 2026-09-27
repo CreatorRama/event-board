@@ -1,0 +1,428 @@
+/* LAB 3 — base component styles
+   (A9: refactored from #site-header to .site-header — see note
+   at the bottom of the Lab 4 section for why)*/
+
+.site-header {
+  background-color: var(--brand);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.site-header img { margin-bottom: 10px; }
+.site-header a { color: white; }
+
+
+/* Descendant selector (Lab 3) — matches an <a> at ANY depth inside <nav>,
+   e.g. nav > ul > li > a. Compare with the child combinator below (A2). */
+nav a {
+  color: white;
+  margin: 5px;
+}
+
+
+
+
+main { padding: 20px; }
+section { margin: 20px 0; padding: 20px; }
+
+
+.events {
+  background-color: var(--card-bg);
+  border: 2px solid gray;
+  
+}
+
+.navigation {
+  display:flex;
+  justify-content: center;
+
+}
+
+
+
+
+section { background-color: white; }
+.events { background-color: var(--card-bg); }
+
+article {
+  background-color: var(--card-bg);
+  border: 1px solid gray;
+ 
+  margin: 10px 0;
+  padding: 15px;
+}
+
+.countdown {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+.details {
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+h1 { font: bold 2rem Georgia, serif; }
+
+
+figure {
+  text-align: center;
+  margin: 20px;
+}
+
+details {
+  background-color: var(--card-bg);
+  border: 1px solid gray;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button:hover, button:focus {
+  background-color: #111827;
+  outline: 3px solid orange;
+}
+
+footer {
+  background-color: var(--brand);
+  color: white;
+}
+footer a { color: white; }
+
+/* Base table structure (striping itself is added in the Lab 4 section
+   below, under A6, so all the new selector work stays together there) */
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+.schedule caption {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+  color: var(--brand);
+}
+.schedule th,
+.schedule td {
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: left;
+}
+
+
+/*
+   LAB 4 — Part A: Selectors, the cascade & specificity
+  */
+
+/* A2: Child combinator — styles ONLY elements that are DIRECT
+   children of <main> (the six top-level <section>s). This is
+   different from a descendant selector like "nav a" above, which
+   reaches an <a> no matter how many levels deep it is nested. If
+   a <section> ever contained a nested <section>, "main > section"
+   would still skip the inner one, but "main section" would not. */
+main > section {
+  border-top: 4px solid var(--brand);
+}
+
+/* A2: Same idea applied to the nav list — only the <li>s that are
+   direct children of .navigation get this spacing, not any <li>
+   that might be nested deeper inside a dropdown later on. */
+.navigation > li {
+  margin: 0 8px;
+}
+
+
+/* A3: Adjacent sibling combinator — styles ONLY the single <p>
+   that comes immediately after an <h2>. In the Speakers section
+   this bolds just the first paragraph ("Guest speakers..."). */
+h2 + p {
+  font-weight: bold;
+}
+
+/* A3: General sibling combinator — styles EVERY <p> that comes
+   after an <h2> at the same nesting level, not just the first.
+   In the Speakers section all four paragraphs turn this grey
+   colour, while only the first one (matched above too) is also
+   bold — that overlap is exactly how h2 + p and h2 ~ p differ. */
+h2 ~ p {
+  color: #444;
+}
+
+
+/* A4: Attribute selector — flag external links and add a visual
+   "leaving the site" marker with generated content. */
+a[href^="https"] {
+  color: darkred;
+}
+a[href^="https"]::after {
+  content: " \2197"; /* ↗ */
+}
+
+/* A4: Attribute selectors — style typed form fields differently */
+input[type="email"] {
+  background-color: #eef4ff;
+}
+input[type="date"] {
+  background-color: #fef9e7;
+}
+
+
+/* A5: Focus styling for form fields, so keyboard users always
+   know which field they're in (a:hover / a:focus / a:visited
+   live in base.css, reordered into LVHA order — see A8 there). */
+input:focus,
+select:focus {
+  outline: 3px solid orange;
+  border-color: var(--brand);
+}
+
+
+/* A6: nth-child — stripe alternating rows of the schedule table */
+.schedule tbody tr:nth-child(even) {
+  background-color: #eef2f7;
+}
+
+/* A6: first-child / last-child — give the footer link list a
+   divider BETWEEN items, then drop it after the last one so the
+   list doesn't end with a trailing line. */
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+footer nav li {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0 12px;
+}
+footer nav li:last-child {
+  border-right: none;
+}
+
+/* A6: :not() — every nav link except the currently active page
+   (.active is set on "Home" in index.html) gets slightly muted;
+   the active link stays fully opaque and underlined. */
+.navigation a:not(.active) {
+  opacity: 0.85;
+}
+.navigation a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+/* A7: Generated content — a large quotation mark before each
+   alumni testimonial. content: ""; alone would render nothing
+   visible, so we give it the actual character to display. */
+blockquote {
+  position: relative;
+  padding-left: 34px;
+  font-style: italic;
+}
+blockquote::before {
+  content: "\201C"; /* " */
+  position: absolute;
+  left: 0;
+  top: -6px;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--brand);
+}
+
+/* A7: style the hint text shown inside empty inputs */
+input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+
+/* A9: Keep specificity low.
+   #site-header and #notification used to be styled by ID
+   (specificity 1,0,0 — higher than almost anything else on the
+   page, and impossible to override without another ID or
+   !important). They're now styled via .site-header and
+   .notification classes instead; the id="" attributes stay in
+   the HTML only as anchor targets / accessibility landmarks, not
+   as style hooks. No selector in this file uses an ID selector. */
+.notification {
+  font-weight: bold;
+}
+
+
+/*
+   ================================================================
+   LAB 5 — Part A: A design system & the box model
+   Everything below is new for Lab 5. Nothing above this line was
+   touched, and index.html stays exactly as it was — every selector
+   here reaches the right element through the existing markup (no
+   new classes/ids added): the three event <article>s via
+   ".events article", the hero photo via "h1 + img" (the only img
+   right after an h1), and so on.
+   ================================================================
+*/
+
+/* A5: one Google web font. @import has to come before every other
+   rule in the file, so it's pinned right here at the top of the
+   Lab 5 section rather than the very top of the whole file (which
+   would put it above the Lab 3/4 comment header). The whole url()
+   stays on one line. */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap");
+
+
+/* -------------------------------------------------------------
+   A6: box-sizing
+   Wins the cascade for every element, including ones already
+   styled above (cards, table cells, inputs). With border-box, an
+   element's declared width already INCLUDES its padding and
+   border, instead of padding/border adding extra pixels on top of
+   that width.
+
+   NOTES — actual width of a boxed element, with vs without this:
+     .card { width: 300px; padding: 15px; border: 1px solid gray; }
+     content-box (browser default, no reset):
+       rendered width = 300 (width) + 15*2 (padding) + 1*2 (border)
+                      = 332px on screen
+     border-box (this reset applied):
+       rendered width = 300px on screen, exactly as declared;
+       the content area is what shrinks: 300 - 30 - 2 = 268px
+   ------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+
+/* -------------------------------------------------------------
+   A2 + A3: colour palette as custom properties
+   --brand and --card-bg already existed above (Lab 3/4 rules
+   reference them); they're redefined here alongside the new
+   --accent / --ink / --paper tokens so the whole palette lives
+   in one place. Every colour FORM required by A3 (hex, rgb(),
+   hsl()) appears at least once, plus one semi-transparent colour
+   for overlays/hover.
+   ------------------------------------------------------------- */
+:root {
+  --brand: #1e3a5f;                 /* hex  — deep tech-fest navy   */
+  --accent: hsl(24, 88%, 55%);      /* hsl() — warm CTA orange      */
+  --ink: rgb(31, 41, 55);           /* rgb() — near-black body text */
+  --paper: #f7f5f0;                 /* hex  — warm off-white page   */
+  --card-bg: #ffffff;
+  --overlay: rgb(0 0 0 / 40%);      /* A3: semi-transparent colour  */
+
+  /* A5: font stack + type scale, all in rem so it scales with the
+     user's browser font-size setting instead of being pinned to px */
+  --font-display: "Space Grotesk", Georgia, serif;
+  --font-body: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --step-small: 0.875rem;
+  --step-body: 1rem;
+  --step-h3: 1.25rem;
+  --step-h2: 1.75rem;
+  --step-h1: clamp(1.5rem, 4vw, 3rem); /* A4: fluid heading, no media query needed */
+}
+
+
+/* -------------------------------------------------------------
+   A5: typography & type scale
+   ------------------------------------------------------------- */
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--paper);
+  font-size: var(--step-body);
+  line-height: 1.5;                 /* A5: body line-height */
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--brand);
+}
+h1 { font-size: var(--step-h1); }
+h2 { font-size: var(--step-h2); }
+h3 { font-size: var(--step-h3); }
+
+small { font-size: var(--step-small); }
+
+/* A5: cap reading width so long paragraphs don't run edge to edge */
+p {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* -------------------------------------------------------------
+   A7: apply the box model — page container + section spacing
+   ------------------------------------------------------------- */
+#main {
+  width: min(90%, 60rem);           /* A4: relative width, % form */
+  margin: 0 auto;                   /* centre the page container  */
+  padding: 2rem 1rem;
+}
+
+section {
+  /* A7: four-value shorthand written out in full on purpose —
+     Top Right Bottom Left — even though top/bottom match here */
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+
+/* -------------------------------------------------------------
+   A8: card component
+   Targets only the three event <article>s (".events article"),
+   not the alumni testimonial <article>s elsewhere on the page —
+   those keep the plain "article" rule from the Lab 3 section
+   above, so the two kinds of content read differently without
+   needing new classes.
+   ------------------------------------------------------------- */
+.events article {
+  padding: 1rem;
+  border: 1px solid gray;           /* hairline border stays in px */
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  margin: 0.75rem 0;
+}
+.events article:hover {
+  box-shadow: 0 4px 12px var(--overlay);
+}
+
+
+/* -------------------------------------------------------------
+   A9: tidy images + use display deliberately
+   ------------------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero banner: the campus-flag image is the only <img> that comes
+   straight after an <h1>, so "h1 + img" reaches it with no new
+   class. It needs a fixed shape regardless of the source image's
+   own aspect ratio, so object-fit crops it instead of squashing
+   it; calc() carves out room to match the section's own side
+   padding exactly. */
+h1 + img {
+  display: block;
+  width: calc(100% - 2rem);         /* A4: calc() */
+  height: 220px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* display, used deliberately (A9):
+   - "a row of nav items" is already display:flex via .navigation
+     above — not repeated here.
+   - The hero's second call-to-action ("Explore Events") is hidden
+     for now with display:none, to be revealed later once the
+     full events lineup is confirmed. This is different from
+     visibility:hidden: display:none removes the element from
+     layout completely (no reserved space, skipped by tab order
+     and screen readers), while visibility:hidden would still
+     occupy its box on the page, just invisibly. */
+section:first-of-type a[href="#events"] {
+  display: none;
+}
+
+

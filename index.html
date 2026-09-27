@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Event Management - IIIT Vadodara</title>
+  <meta name="description" content="Campus Event Management page for IIIT Vadodara Gandhinagar Campus.">
+  <link rel="icon" href="IIIT_VADODARA_LOGO.png">
+  <meta property="og:title" content="Campus Event Management">
+  <meta property="og:description" content="Information about upcoming campus events at IIIT Vadodara.">
+  <meta property="og:image" content="IIIT_VADODARA_LOGO.png">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- B1: viewport tag confirmed present — required for any of the
+       responsive CSS below to do anything on a real phone -->
+
+</head>
+<body>
+
+  <header id="site-header" class="site-header">
+    <img src="IIIT_VADODARA_LOGO.png" alt="IIIT Vadodara logo" width="100">
+  </header>
+
+  <!-- B2: nav pulled out to be its own top-level grid region, a
+       sibling of header/main/footer, instead of living inside
+       <header> — that's what lets grid-area: nav target it on
+       its own.
+       B6: hamburger <button> markup added; .nav-links is the row
+       of links itself, toggled purely by CSS media queries here
+       (the click-driven mobile toggle is JS, for a later lab). -->
+  <nav class="nav" id="site-nav">
+    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-list">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <ul class="navigation nav-links" id="primary-nav-list">
+      <!-- A6: "active" class lets us style every other link with :not(.active) -->
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#notification">Notification</a></li>
+      <li><a href="#speakers">Speakers</a></li>
+      <li><a href="#registration">Register</a></li>
+    </ul>
+  </nav>
+
+
+  <main id="main">
+    
+    <section>
+      <h1>CEREBRO 2026: Innovate. Code. Conquer.</h1>
+      <img src="download.png" alt="IIIT Vadodara campus flag" width="300">
+      <p class="details">
+        Annual Tech Fest of IIIT Vadodara (Gandhinagar Campus).
+        You are cordially invited to participate, collaborate, and win
+      </p>
+      <p class="countdown">02 DAYS : 14 HOURS : 32 MINS</p>
+      <p id="notification" class="notification">
+        <mark>Limited seats remaining!</mark> Register before spots run out.
+      </p>
+      <a href="#registration">Register Now</a>
+      <a href="#events">Explore Events</a>
+    </section>
+
+  
+    <section class="events" id="events">
+      <h2>Upcoming Events</h2>
+      <p>Cultural, academic and many more events.</p>
+
+      <!-- B3/B4: cards wrapped so the grid only applies to them,
+           not to the paragraph or table that follow -->
+      <div class="event-grid">
+        <article>
+          <h3>Internal Hackathon</h3>
+          <time datetime="2026-09-05">5 September 2026</time>
+          <!-- A4: absolute https:// link -> matched by a[href^="https"], gets the "↗" via ::after -->
+          <p>Qualify the internal Hackathon for a chance to participate in <a href="https://www.sih.gov.in" target="_blank" rel="noopener"><abbr title="Smart India Hackathon">SIH</abbr></a>.</p>
+        </article>
+        <article>
+          <h3>Maths Quiz</h3>
+          <time datetime="2026-09-10">10 September 2026</time>
+          <p>Testing the quantitative aptitude ability of students.</p>
+        </article>
+        <article>
+          <h3>Drama Play</h3>
+          <time datetime="2026-09-07">7 September 2026</time>
+          <p>Skit performance by students on social awareness topics.</p>
+        </article>
+      </div>
+
+      <!-- A6: a real table so tr:nth-child(even) has rows to stripe -->
+      <table class="schedule">
+        <caption>Full Event Schedule</caption>
+        <thead>
+          <tr>
+            <th scope="col">Event</th>
+            <th scope="col">Date</th>
+            <th scope="col">Venue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Internal Hackathon</td>
+            <td>5 September 2026</td>
+            <td>Main Auditorium</td>
+          </tr>
+          <tr>
+            <td>Drama Play</td>
+            <td>7 September 2026</td>
+            <td>Open Air Theatre</td>
+          </tr>
+          <tr>
+            <td>Maths Quiz</td>
+            <td>10 September 2026</td>
+            <td>Seminar Hall</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <section>
+      <h2>What Our Alumni Say</h2>
+      <p>Memories and experiences from our former students.</p>
+      <!-- A7: testimonials as <blockquote> so ::before can add a generated quote mark -->
+      <article>
+        <h3>Aditya Sharma</h3>
+        <p>B.Tech CSE, Alumni 2022</p>
+        <blockquote>
+          <p>Being a part of IIITV events gave me some of the best memories of college. Organizing and participating in events helped me develop confidence, leadership, and teamwork skills.</p>
+        </blockquote>
+      </article>
+      <article>
+        <h3>Neha Patel</h3>
+        <p>B.Tech CSE, Alumni 2021</p>
+        <blockquote>
+          <p>IIITV events were always full of energy and creativity. Every event gave us a chance to learn something new and make lasting memories.</p>
+        </blockquote>
+      </article>
+      <article>
+        <h3>Rohan Kumar</h3>
+        <p>B.Tech CSE, Alumni 2023</p>
+        <blockquote>
+          <p>Event management taught me how to handle responsibilities, communicate effectively, and work under pressure.</p>
+        </blockquote>
+      </article>
+    </section>
+
+
+    <section id="speakers">
+      <h2>Speakers</h2>
+      <p>Guest speakers will share ideas about technology and innovation.</p>
+      <p>Use <kbd>Tab</kbd> to move through the interactive elements.</p>
+      <p>The event uses <code>HTML</code> and <code>CSS</code> for its web page.</p>
+      <p>Our main event is <cite>CEREBRO 2026</cite>.</p>
+    </section>
+
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>Who can participate?</summary>
+        <p>Students of IIIT Vadodara can participate in the events.</p>
+      </details>
+      <details>
+        <summary>How can I register?</summary>
+        <p>Fill in the registration form below and submit it.</p>
+      </details>
+    </section>
+
+
+    <section id="registration">
+      <h2>Event Registration</h2>
+      <form action="thankyou.html">
+        <p><label for="name" >Name</label></p><p><input id="name" name="name" type="text" required placeholder="Name"></p>
+        <p><label for="email">Email</label></p><p><input id="email" name="email" type="email" required placeholder="Email"></p>
+        <!-- A4: type="date" field so input[type="date"] has something to select -->
+        <p><label for="dob">Date of Birth</label></p><p><input id="dob" name="dob" type="date" required></p>
+        <p>
+          <label for="event">Choose an event</label>
+        </p>
+        <p>
+          <select id="event" name="event">
+            <option value="hackathon">Internal Hackathon</option>
+            <option value="quiz">Maths Quiz</option>
+            <option value="drama">Drama Play</option>
+          </select>
+        </p>
+        <button type="submit">Submit Registration</button>
+      </form>
+    </section>
+
+
+    <figure>
+      <img src="IIIT_VADODARA_LOGO.png" alt="IIIT Vadodara logo" width="100">
+      <figcaption>IIIT Vadodara</figcaption>
+    </figure>
+  </main>
+
+
+  <footer>
+    <p>IIIT Vadodara, Sector 28, Gandhinagar, Gujarat, India</p>
+    <address>Email: info@iiitvadodara.ac.in</address>
+    <nav>
+      <ul class="footer-links">
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="#events">Events</a></li>
+        <!-- A4: another https:// link to show a[href^="https"] + ::after in the footer -->
+        <li><a href="https://iiitvadodara.ac.in" target="_blank" rel="noopener">Official Website</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
