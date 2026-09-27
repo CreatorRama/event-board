@@ -426,3 +426,152 @@ section:first-of-type a[href="#events"] {
 }
 
 
+/*
+   ================================================================
+   LAB 5 — Part B: Layout — CSS Grid & responsive design
+   ================================================================
+*/
+ 
+/* B1: the viewport tag is already in <head> — confirmed there,
+   nothing to add here. Without it, none of the @media rules below
+   would ever kick in on a real phone (it would just render at
+   "desktop width" and get zoomed out). */
+ 
+ 
+/* -------------------------------------------------------------
+   B2: page skeleton laid out with Grid.
+   Mobile-first base: everything stacked in one column, in the
+   order header / nav / main / footer. header, #site-nav, #main
+   and footer are each direct children of <body>, so grid-area
+   places them straight into the named regions below.
+   ------------------------------------------------------------- */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+}
+header    { grid-area: header; }
+#site-nav { grid-area: nav; }
+#main     { grid-area: main; }
+footer    { grid-area: footer; }
+ 
+ 
+/* -------------------------------------------------------------
+   B3 + B4: responsive card grid — NO media query here on purpose;
+   auto-fit + minmax does all the reflowing by itself.
+   NOTES: auto-fit fits as many minmax(15rem, 1fr) tracks as will
+   fit in a row without any track dropping under 15rem, stretching
+   them to fill the row; once the container is too narrow for two
+   15rem tracks side by side, it drops to a single column on its
+   own — no breakpoint required.
+   ------------------------------------------------------------- */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;                        /* B4: gap */
+}
+ 
+ 
+/* -------------------------------------------------------------
+   B6: responsive nav — mobile (base) state.
+   The link row is hidden and the hamburger button is shown; the
+   button's actual open/close CLICK behaviour is JavaScript, for a
+   later lab — this only sets how each state should look.
+   ------------------------------------------------------------- */
+#site-nav {
+  background-color: var(--brand);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: sticky;                 /* keeps the nav pinned while the
+                                        page scrolls, at every width */
+  top: 0;
+  z-index: 10;
+}
+.nav-toggle {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: none;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  padding: 0.35rem 0.75rem;
+  color: white;
+  cursor: pointer;
+}
+.nav-links {
+  display: none;                    /* B6: hidden on phones */
+}
+ 
+ 
+/* -------------------------------------------------------------
+   B5: mobile-first breakpoints.
+   Everything above this point is the phone layout; each @media
+   below only ADDS columns as the viewport grows — nothing here
+   removes or overrides the mobile base for a screen that doesn't
+   match.
+   ------------------------------------------------------------- */
+ 
+/* ~40rem (≈640px, tablet-ish): header and nav sit side by side
+   (two columns), and the full link row replaces the hamburger. */
+@media (min-width: 40rem) {
+  body {
+    grid-template-areas:
+      "header nav"
+      "main main"
+      "footer footer";
+    grid-template-columns: auto 1fr;
+  }
+  .nav-toggle { display: none; }
+  .nav-links  { display: flex; }
+}
+ 
+/* ~64rem (≈1024px, desktop): nav becomes a persistent sidebar
+   running down beside main, instead of a bar across the top. */
+@media (min-width: 64rem) {
+  body {
+    grid-template-areas:
+      "header header"
+      "nav main"
+      "footer footer";
+    grid-template-columns: 12rem 1fr;
+  }
+  #site-nav {
+    flex-direction: column;
+    align-items: stretch;
+    align-self: start;              /* stop it stretching to match
+                                        main's full row height — a
+                                        stretched box can't "stick",
+                                        it's already as tall as its
+                                        track */
+  }
+  .nav-links {
+    flex-direction: column;
+  }
+}
+ 
+ 
+/* -------------------------------------------------------------
+   B7: responsive images & type — mostly already covered by the
+   Part A rules above: "img { max-width: 100%; }" lets every image
+   scale down, "--step-h1: clamp(...)" is the fluid size, and
+   "#main { width: min(90%, 60rem); }" + "p { max-width: 65ch; }"
+   already cap how wide text/lines get on a large screen.
+   ------------------------------------------------------------- */
+ 
+ 
+/* B8/B9 (testing + jigsaw.w3.org/css-validator run) are manual
+   checks done in the browser, not code — nothing to add here. */
+ 
+
+
+
+
+
+
+
