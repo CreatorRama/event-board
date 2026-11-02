@@ -393,7 +393,7 @@ section {
    A9: tidy images + use display deliberately
    ------------------------------------------------------------- */
 img {
-  max-width: 100%;
+  max-width: 1000%;
   height: auto;
 }
 
@@ -408,7 +408,7 @@ h1 + img {
   width: calc(100% - 2rem);         /* A4: calc() */
   height: 220px;
   margin: 0 auto;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* display, used deliberately (A9):
@@ -431,13 +431,13 @@ section:first-of-type a[href="#events"] {
    LAB 5 — Part B: Layout — CSS Grid & responsive design
    ================================================================
 */
- 
+
 /* B1: the viewport tag is already in <head> — confirmed there,
    nothing to add here. Without it, none of the @media rules below
    would ever kick in on a real phone (it would just render at
    "desktop width" and get zoomed out). */
- 
- 
+
+
 /* -------------------------------------------------------------
    B2: page skeleton laid out with Grid.
    Mobile-first base: everything stacked in one column, in the
@@ -458,8 +458,8 @@ header    { grid-area: header; }
 #site-nav { grid-area: nav; }
 #main     { grid-area: main; }
 footer    { grid-area: footer; }
- 
- 
+
+
 /* -------------------------------------------------------------
    B3 + B4: responsive card grid — NO media query here on purpose;
    auto-fit + minmax does all the reflowing by itself.
@@ -474,8 +474,8 @@ footer    { grid-area: footer; }
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1rem;                        /* B4: gap */
 }
- 
- 
+
+
 /* -------------------------------------------------------------
    B6: responsive nav — mobile (base) state.
    The link row is hidden and the hamburger button is shown; the
@@ -487,10 +487,8 @@ footer    { grid-area: footer; }
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  position: sticky;                 /* keeps the nav pinned while the
+  gap: 0.75rem;                /* keeps the nav pinned while the
                                         page scrolls, at every width */
-  top: 0;
   z-index: 10;
 }
 .nav-toggle {
@@ -507,8 +505,8 @@ footer    { grid-area: footer; }
 .nav-links {
   display: none;                    /* B6: hidden on phones */
 }
- 
- 
+
+
 /* -------------------------------------------------------------
    B5: mobile-first breakpoints.
    Everything above this point is the phone layout; each @media
@@ -516,7 +514,7 @@ footer    { grid-area: footer; }
    removes or overrides the mobile base for a screen that doesn't
    match.
    ------------------------------------------------------------- */
- 
+
 /* ~40rem (≈640px, tablet-ish): header and nav sit side by side
    (two columns), and the full link row replaces the hamburger. */
 @media (min-width: 40rem) {
@@ -530,32 +528,24 @@ footer    { grid-area: footer; }
   .nav-toggle { display: none; }
   .nav-links  { display: flex; }
 }
- 
-/* ~64rem (≈1024px, desktop): nav becomes a persistent sidebar
-   running down beside main, instead of a bar across the top. */
+
+/* ~64rem (≈1024px, desktop): the header+nav row from the 40rem
+   breakpoint carries forward unchanged — nav stays a single
+   horizontal bar at every desktop width, it never becomes a
+   vertical sidebar. This breakpoint instead gives the page more
+   breathing room now that there's plenty of width to spare: the
+   container caps wider and the nav links get more space between
+   them. */
 @media (min-width: 64rem) {
-  body {
-    grid-template-areas:
-      "header header"
-      "nav main"
-      "footer footer";
-    grid-template-columns: 12rem 1fr;
-  }
-  #site-nav {
-    flex-direction: column;
-    align-items: stretch;
-    align-self: start;              /* stop it stretching to match
-                                        main's full row height — a
-                                        stretched box can't "stick",
-                                        it's already as tall as its
-                                        track */
+  #main {
+    width: min(85%, 70rem);
   }
   .nav-links {
-    flex-direction: column;
+    gap: 1.5rem;
   }
 }
- 
- 
+
+
 /* -------------------------------------------------------------
    B7: responsive images & type — mostly already covered by the
    Part A rules above: "img { max-width: 100%; }" lets every image
@@ -563,15 +553,7 @@ footer    { grid-area: footer; }
    "#main { width: min(90%, 60rem); }" + "p { max-width: 65ch; }"
    already cap how wide text/lines get on a large screen.
    ------------------------------------------------------------- */
- 
- 
+
+
 /* B8/B9 (testing + jigsaw.w3.org/css-validator run) are manual
    checks done in the browser, not code — nothing to add here. */
- 
-
-
-
-
-
-
-

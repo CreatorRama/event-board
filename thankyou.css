@@ -8,3 +8,7 @@ body{
 .logo{
     margin-right: 20px;
 }
+
+div h1{
+    padding: 10px;
+}

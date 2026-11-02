@@ -42,7 +42,7 @@ a { text-decoration: none; }
    the one currently happening. :focus is added alongside :hover for
    keyboard accessibility. */
 a:link { color: var(--brand); }
-a:visited { color: purple; }
+/* a:visited { color: purple; } */
 a:hover { text-decoration: underline; }
 a:focus { outline: 3px solid orange; }
 a:active { color: darkred; }
