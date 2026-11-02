@@ -1,0 +1,30 @@
+[
+  {
+    "id": "hackathon",
+    "title": "Internal Hackathon",
+    "date": "2026-09-05",
+    "seats": 3,
+    "online": false,
+    "venue": "Main Auditorium",
+    "description": "Qualify the internal Hackathon for a chance to participate in SIH.",
+    "link": { "url": "https://www.sih.gov.in", "label": "Smart India Hackathon" }
+  },
+  {
+    "id": "drama",
+    "title": "Drama Play",
+    "date": "2026-09-07",
+    "seats": 0,
+    "online": false,
+    "venue": "Open Air Theatre",
+    "description": "Skit performance by students on social awareness topics."
+  },
+  {
+    "id": "quiz",
+    "title": "Maths Quiz",
+    "date": "2026-09-10",
+    "seats": 40,
+    "online": false,
+    "venue": "Seminar Hall",
+    "description": "Testing the quantitative aptitude ability of students."
+  }
+]
