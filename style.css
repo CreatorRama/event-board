@@ -557,3 +557,92 @@ footer    { grid-area: footer; }
 
 /* B8/B9 (testing + jigsaw.w3.org/css-validator run) are manual
    checks done in the browser, not code — nothing to add here. */
+
+
+   /*
+   ================================================================
+   LAB 6 — styles for the JavaScript-driven parts
+   Paste this block at the VERY END of style.css (so it wins ties).
+   ================================================================
+*/
+
+/* B6: search box */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.search-bar input { flex: 1 1 15rem; }
+
+/* B7: the three fetch states, chosen by script.js via data-state */
+.status {
+  margin: 0.5rem 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid var(--brand);
+  background-color: #eef2f7;
+}
+.status[data-state="loading"] { border-left-color: orange; background-color: #fff7e6; }
+.status[data-state="error"]   { border-left-color: crimson; background-color: #fdecea; color: #7f1d1d; }
+.status:empty { display: none; }
+
+/* B2/B3: cards built by JavaScript */
+.badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 1rem;
+  font-size: var(--step-small);
+  font-weight: 700;
+  color: white;
+}
+.badge-open { background-color: #15803d; }
+.badge-few  { background-color: #b45309; }
+.badge-full { background-color: #b91c1c; }
+
+.events article.full     { background-color: #f3f4f6; border-color: #9ca3af; }
+.events article.selected { outline: 3px solid var(--accent); }
+.events .meta { font-size: var(--step-small); }
+
+.rsvp { margin-top: 0.75rem; cursor: pointer; }
+.rsvp:disabled,
+.rsvp:disabled:hover {
+  background-color: #9ca3af;
+  outline: none;
+  cursor: not-allowed;
+}
+
+/* B4: hamburger menu open state (phones). The 40rem breakpoint above
+   already shows the links as a row, so this only matters below 40rem. */
+#site-nav { flex-wrap: wrap; }
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  gap: 0.25rem;
+}
+@media (min-width: 40rem) {
+  .nav-links,
+  .nav-links.open {
+    flex-direction: row;
+    flex-basis: auto;
+  }
+}
+
+/* B8: validation feedback */
+.field-error {
+  display: block;
+  min-height: 1.25em;
+  color: crimson;
+  font-size: var(--step-small);
+}
+form.was-validated input:invalid,
+form.was-validated select:invalid {
+  border-color: crimson;
+  background-color: #fdecea;
+}
+form.was-validated input:valid,
+form.was-validated select:valid {
+  border-color: #15803d;
+}

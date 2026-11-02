@@ -13,7 +13,7 @@ const PAGE_TITLE = "CEREBRO 2026";   // string
 const LOW_SEATS_LIMIT = 5;           // number
 const DEBUG = true;                  // boolean (turn off to silence console output)
 const EVENTS_URL = "events.json";    // B7: where the data lives
-const FAKE_DELAY_MS = 800;           // B7: lets you SEE the "Loading..." state; set to 0 when done
+const FAKE_DELAY_MS = 3000;           // B7: lets you SEE the "Loading..." state; set to 0 when done
 
 let eventsData = [];                 // let: reassigned once the fetch finishes
 let searchTerm = "";                 // let: changes on every keystroke
