@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event id="hackathon">
+    <title>Internal Hackathon</title>
+    <date>2026-09-05</date>
+    <seats>3</seats>
+    <free>true</free>
+    <online>false</online>
+    <venue>Main Auditorium</venue>
+    <description>Qualify the internal Hackathon for a chance to participate in SIH.</description>
+  </event>
+  <event id="drama">
+    <title>Drama Play</title>
+    <date>2026-09-07</date>
+    <seats>0</seats>
+    <free>true</free>
+    <online>false</online>
+    <venue>Open Air Theatre</venue>
+    <description>Skit performance by students on social awareness topics.</description>
+  </event>
+  <event id="quiz">
+    <title>Maths Quiz</title>
+    <date>2026-09-10</date>
+    <seats>40</seats>
+    <free>true</free>
+    <online>false</online>
+    <venue>Seminar Hall</venue>
+    <description>Testing the quantitative aptitude ability of students.</description>
+  </event>
+</events>

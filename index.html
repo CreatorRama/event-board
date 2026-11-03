@@ -9,8 +9,8 @@
   <meta property="og:title" content="Campus Event Management">
   <meta property="og:description" content="Information about upcoming campus events at IIIT Vadodara.">
   <meta property="og:image" content="IIIT_VADODARA_LOGO.png">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
   <!-- B1 (Lab 5): viewport tag confirmed present — required for any of the
        responsive CSS to do anything on a real phone -->
 
@@ -151,6 +151,20 @@
       <details>
         <summary>How can I register?</summary>
         <p>Fill in the registration form below and submit it.</p>
+      </details>
+    </section>
+
+
+    <!-- Lab 7: reads the SAME events from events.json (parsed with res.json())
+         and from events.xml (parsed with DOMParser). script.js fills these elements. -->
+    <section id="data-lab">
+      <h2>Data Formats Lab: JSON and XML</h2>
+      <div class="data-line" id="xml-title">Loading events.xml...</div>
+      <div class="data-line" id="roundtrip-result">Waiting for events.json...</div>
+      <div class="data-line" id="size-report">Waiting for file sizes...</div>
+      <details>
+        <summary>Show JSON.stringify(events, null, 2)</summary>
+        <pre id="roundtrip-output"></pre>
       </details>
     </section>
 

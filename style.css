@@ -646,3 +646,33 @@ form.was-validated input:valid,
 form.was-validated select:valid {
   border-color: #15803d;
 }
+
+
+/*
+   ================================================================
+   LAB 7 — styles for the "Data Formats Lab" section
+   Paste this block at the VERY END of style.css (after the Lab 6 block).
+   ================================================================
+*/
+
+/* B3/B4/B5: result lines filled in by script.js (divs, so the
+   p { max-width: 65ch } rule from Lab 5 does not apply to them) */
+#data-lab .data-line {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid var(--brand);
+  background-color: #eef2f7;
+}
+
+/* B3: the JSON.stringify output block */
+#data-lab pre {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  max-height: 20rem;
+  overflow: auto;
+  border-radius: 0.5rem;
+  background-color: #0f172a;
+  color: #e5e7eb;
+  font-size: var(--step-small);
+  line-height: 1.4;
+}

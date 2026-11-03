@@ -1,7 +1,7 @@
-# CEREBRO 2026: Campus Event Board (Labs 3 to 6)
+# CEREBRO 2026: Campus Event Board (Labs 3 to 7)
 
 Event page for the IIIT Vadodara (Gandhinagar campus) tech fest. Built up lab by lab:
-HTML and CSS in Labs 3 to 5, and **JavaScript interactivity in Lab 6**.
+HTML and CSS in Labs 3 to 5, **JavaScript interactivity in Lab 6**, and **JSON & XML data formats in Lab 7**.
 
 **Live site:** [add GitHub Pages link if enabled]
 
@@ -18,8 +18,9 @@ will show the "couldn't load events" message. Serve the folder instead:
 | File | Purpose |
 |---|---|
 | `index.html` | Page markup. Event cards are no longer hard-coded; they are built by JavaScript. |
-| `script.js` | **Lab 6.** All behaviour: data handling, rendering, events, fetch, form validation. |
-| `events.json` | **Lab 6.** The event data (single source of truth for the cards). |
+| `script.js` | **Lab 6/7.** All behaviour: data handling, rendering, events, fetch, form validation, JSON/XML demos. |
+| `events.json` | **Lab 6/7.** The event data (single source of truth for the cards), now with a `free` flag. |
+| `events.xml` | **Lab 7.** The same events written as XML (`id` is an attribute, everything else is an element). |
 | `base.css` | Lab 3/4 base styles (reset, typography, link states). |
 | `style.css` | Lab 3/4 selectors, Lab 5 design system and layout, plus the Lab 6 block at the end. |
 | `thankyou.html`, `thankyou.css` | Page shown after a valid registration. |
@@ -60,9 +61,41 @@ will show the "couldn't load events" message. Serve the folder instead:
 - **B9** `console.log`, `console.table` and `console.error` are used to inspect the data and handlers.
 
 ### Testing notes
-- `FAKE_DELAY_MS` at the top of `script.js` adds a short delay so the Loading state is visible
-  for screenshots. Set it to `0` for normal use.
+- `FAKE_DELAY_MS` at the top of `script.js` is `0`. Raise it (for example to `800`) to make the Loading state
+  visible for screenshots.
 - To see the error state, temporarily point `EVENTS_URL` at a file that does not exist.
+
+## Lab 7: JSON & XML
+
+The same three events exist in two formats:
+
+```
+events.json   [ { "id": "quiz", "title": "Maths Quiz", "seats": 40, "free": true, ... } ]
+events.xml    <event id="quiz"><title>Maths Quiz</title><seats>40</seats><free>true</free> ... </event>
+```
+
+### Section A: the data
+- **A1/A2** `events.json` is an array of objects using a string (`title`), number (`seats`) and boolean (`free`).
+- **A3/A4** `events.xml` starts with `<?xml version="1.0" encoding="UTF-8"?>`, has an `<events>` root and one
+  `<event>` per item. `id` is an attribute (it identifies the event); all other fields are child elements.
+- **A5** Dates are ISO-8601 strings (`2026-09-10`) in both files.
+
+### Section B: using the data in the page (`script.js`, "LAB 7" block)
+- **B1** Cards are rendered from `fetch("events.json")` + `res.json()`.
+- **B2** `events[0].title` and `events[events.length - 1].seats` are logged in the Console.
+- **B3** Round trip: `JSON.stringify(events, null, 2)` is printed in the "Data Formats Lab" section and
+  compared with the text of `events.json`.
+- **B4** `events.xml` is parsed with `DOMParser`; `getElementsByTagName("title")[0]` is shown on the page.
+- **B5** The byte sizes of both files are measured and reported on the page.
+
+### Section C: validate & decide
+- **C1** Broken-on-purpose JSON (a trailing comma) is documented in `NOTES.pdf` with the validator error and the fix.
+- **C2** `isValidEvent()` enforces three schema rules: `title` is a non-empty string, `seats` is a whole number
+  of 0 or more, and `date` is an ISO `YYYY-MM-DD` date. Events that break a rule are skipped with a console warning.
+- **C3** The page uses JSON (see `NOTES.pdf` for the reasoning).
+
+### Lab 7 additions to `style.css`
+Appended after the Lab 6 block: the result lines and the `<pre>` block of the "Data Formats Lab" section.
 
 ## Lab 5: design system & layout (`style.css`)
 
@@ -90,8 +123,7 @@ Appended at the end of the file: search bar, fetch-state colours (`[data-state]`
 (`.field-error`, `form.was-validated`).
 
 ## Submission checklist
-- [ ] Screenshots: events rendered from data; search filter; loading / success / error states;
-      form error, then fixed
-- [ ] `NOTES.pdf` with answers and the final `script.js` appendix
+- [ ] Lab 7 screenshots: cards from events.json; XML title on the page; validator error and the one-character fix
+- [ ] `NOTES.pdf` with the Lab 7 answers
 - [ ] Repository link and (optional) Pages link added above
 - [ ] Readable commit history
