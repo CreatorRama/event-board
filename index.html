@@ -1,239 +1,298 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Campus Event Management - IIIT Vadodara</title>
-  <meta name="description" content="Campus Event Management page for IIIT Vadodara Gandhinagar Campus.">
-  <link rel="icon" href="IIIT_VADODARA_LOGO.png">
-  <meta property="og:title" content="Campus Event Management">
-  <meta property="og:description" content="Information about upcoming campus events at IIIT Vadodara.">
-  <meta property="og:image" content="IIIT_VADODARA_LOGO.png">
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="style.css">
-  <!-- B1 (Lab 5): viewport tag confirmed present — required for any of the
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campus Event Management - IIIT Vadodara</title>
+    <meta
+      name="description"
+      content="Campus Event Management page for IIIT Vadodara Gandhinagar Campus."
+    />
+    <link rel="icon" href="IIIT_VADODARA_LOGO.png" />
+    <meta property="og:title" content="Campus Event Management" />
+    <meta
+      property="og:description"
+      content="Information about upcoming campus events at IIIT Vadodara."
+    />
+    <meta property="og:image" content="IIIT_VADODARA_LOGO.png" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- B1 (Lab 5): viewport tag confirmed present — required for any of the
        responsive CSS to do anything on a real phone -->
+  </head>
+  <body>
+    <header id="site-header" class="site-header">
+      <img src="IIIT_VADODARA_LOGO.png" alt="IIIT Vadodara logo" width="100" />
+      <nav class="nav" id="site-nav">
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="primary-nav-list"
+        >
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+        <ul class="navigation nav-links" id="primary-nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#notification">Notification</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#registration">Register</a></li>
+        </ul>
+      </nav>
+    </header>
 
-</head>
-<body>
-
-  <header id="site-header" class="site-header">
-    <img src="IIIT_VADODARA_LOGO.png" alt="IIIT Vadodara logo" width="100">
-  </header>
-
-  <!-- Lab 5 B2/B6: nav is its own top-level grid region.
+    <!-- Lab 5 B2/B6: nav is its own top-level grid region.
        Lab 6 B4: script.js toggles the "open" class on #primary-nav-list when
        the hamburger is clicked, and keeps aria-expanded in sync. -->
-  <nav class="nav" id="site-nav">
-    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav-list">
-      <span aria-hidden="true">&#9776;</span>
-    </button>
-    <ul class="navigation nav-links" id="primary-nav-list">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#notification">Notification</a></li>
-      <li><a href="#speakers">Speakers</a></li>
-      <li><a href="#registration">Register</a></li>
-    </ul>
-  </nav>
 
+    <main id="main">
+      <section>
+        <h1>CEREBRO 2026: Innovate. Code. Conquer.</h1>
+        <img src="download.png" alt="IIIT Vadodara campus flag" width="300" />
+        <p class="details">
+          Annual Tech Fest of IIIT Vadodara (Gandhinagar Campus). You are
+          cordially invited to participate, collaborate, and win
+        </p>
+        <p class="countdown">02 DAYS : 14 HOURS : 32 MINS</p>
+        <p id="notification" class="notification">
+          <mark>Limited seats remaining!</mark> Register before spots run out.
+        </p>
+        <a href="#registration">Register Now</a>
+        <a href="#events">Explore Events</a>
+      </section>
 
-  <main id="main">
+      <section class="events" id="events">
+        <h2>Upcoming Events</h2>
+        <p>Cultural, academic and many more events.</p>
 
-    <section>
-      <h1>CEREBRO 2026: Innovate. Code. Conquer.</h1>
-      <img src="download.png" alt="IIIT Vadodara campus flag" width="300">
-      <p class="details">
-        Annual Tech Fest of IIIT Vadodara (Gandhinagar Campus).
-        You are cordially invited to participate, collaborate, and win
-      </p>
-      <p class="countdown">02 DAYS : 14 HOURS : 32 MINS</p>
-      <p id="notification" class="notification">
-        <mark>Limited seats remaining!</mark> Register before spots run out.
-      </p>
-      <a href="#registration">Register Now</a>
-      <a href="#events">Explore Events</a>
-    </section>
-
-
-    <section class="events" id="events">
-      <h2>Upcoming Events</h2>
-      <p>Cultural, academic and many more events.</p>
-
-      <!-- Lab 6 B6: search box. script.js filters the cards on every keystroke;
+        <!-- Lab 6 B6: search box. script.js filters the cards on every keystroke;
            Escape clears it. -->
-      <div class="search-bar">
-        <label for="search">Search events</label>
-        <input type="search" id="search" name="search" placeholder="Type an event name (Esc clears)" autocomplete="off">
-      </div>
+        <div class="search-bar">
+          <label for="search">Search events</label>
+          <input
+            type="search"
+            id="search"
+            name="search"
+            placeholder="Type an event name (Esc clears)"
+            autocomplete="off"
+          />
+        </div>
 
-      <!-- Lab 6 B7: one status line for the three fetch states
+        <!-- Lab 6 B7: one status line for the three fetch states
            (loading / success / error). role="status" makes screen readers announce changes. -->
-      <div id="events-status" class="status" role="status" data-state="loading">Loading events...</div>
+        <div
+          id="events-status"
+          class="status"
+          role="status"
+          data-state="loading"
+        >
+          Loading events...
+        </div>
 
-      <!-- Lab 6 B2: this container starts EMPTY. script.js builds every card
+        <!-- Lab 6 B2: this container starts EMPTY. script.js builds every card
            from events.json (Lab 5's hard-coded cards were removed). -->
-      <div class="event-grid" id="event-grid"></div>
-      <noscript><p>Please enable JavaScript to see the event cards.</p></noscript>
+        <div class="event-grid" id="event-grid"></div>
+        <noscript
+          ><p>Please enable JavaScript to see the event cards.</p></noscript
+        >
 
-      <table class="schedule">
-        <caption>Full Event Schedule</caption>
-        <thead>
-          <tr>
-            <th scope="col">Event</th>
-            <th scope="col">Date</th>
-            <th scope="col">Venue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Internal Hackathon</td>
-            <td>5 September 2026</td>
-            <td>Main Auditorium</td>
-          </tr>
-          <tr>
-            <td>Drama Play</td>
-            <td>7 September 2026</td>
-            <td>Open Air Theatre</td>
-          </tr>
-          <tr>
-            <td>Maths Quiz</td>
-            <td>10 September 2026</td>
-            <td>Seminar Hall</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <table class="schedule">
+          <caption>
+            Full Event Schedule
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Event</th>
+              <th scope="col">Date</th>
+              <th scope="col">Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Internal Hackathon</td>
+              <td>5 September 2026</td>
+              <td>Main Auditorium</td>
+            </tr>
+            <tr>
+              <td>Drama Play</td>
+              <td>7 September 2026</td>
+              <td>Open Air Theatre</td>
+            </tr>
+            <tr>
+              <td>Maths Quiz</td>
+              <td>10 September 2026</td>
+              <td>Seminar Hall</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
+      <section>
+        <h2>What Our Alumni Say</h2>
+        <p>Memories and experiences from our former students.</p>
+        <article>
+          <h3>Aditya Sharma</h3>
+          <p>B.Tech CSE, Alumni 2022</p>
+          <blockquote>
+            <p>
+              Being a part of IIITV events gave me some of the best memories of
+              college. Organizing and participating in events helped me develop
+              confidence, leadership, and teamwork skills.
+            </p>
+          </blockquote>
+        </article>
+        <article>
+          <h3>Neha Patel</h3>
+          <p>B.Tech CSE, Alumni 2021</p>
+          <blockquote>
+            <p>
+              IIITV events were always full of energy and creativity. Every
+              event gave us a chance to learn something new and make lasting
+              memories.
+            </p>
+          </blockquote>
+        </article>
+        <article>
+          <h3>Rohan Kumar</h3>
+          <p>B.Tech CSE, Alumni 2023</p>
+          <blockquote>
+            <p>
+              Event management taught me how to handle responsibilities,
+              communicate effectively, and work under pressure.
+            </p>
+          </blockquote>
+        </article>
+      </section>
 
-    <section>
-      <h2>What Our Alumni Say</h2>
-      <p>Memories and experiences from our former students.</p>
-      <article>
-        <h3>Aditya Sharma</h3>
-        <p>B.Tech CSE, Alumni 2022</p>
-        <blockquote>
-          <p>Being a part of IIITV events gave me some of the best memories of college. Organizing and participating in events helped me develop confidence, leadership, and teamwork skills.</p>
-        </blockquote>
-      </article>
-      <article>
-        <h3>Neha Patel</h3>
-        <p>B.Tech CSE, Alumni 2021</p>
-        <blockquote>
-          <p>IIITV events were always full of energy and creativity. Every event gave us a chance to learn something new and make lasting memories.</p>
-        </blockquote>
-      </article>
-      <article>
-        <h3>Rohan Kumar</h3>
-        <p>B.Tech CSE, Alumni 2023</p>
-        <blockquote>
-          <p>Event management taught me how to handle responsibilities, communicate effectively, and work under pressure.</p>
-        </blockquote>
-      </article>
-    </section>
+      <section id="speakers">
+        <h2>Speakers</h2>
+        <p>Guest speakers will share ideas about technology and innovation.</p>
+        <p>Use <kbd>Tab</kbd> to move through the interactive elements.</p>
+        <p>
+          The event uses <code>HTML</code> and <code>CSS</code> for its web
+          page.
+        </p>
+        <p>Our main event is <cite>CEREBRO 2026</cite>.</p>
+      </section>
 
+      <section>
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>Who can participate?</summary>
+          <p>Students of IIIT Vadodara can participate in the events.</p>
+        </details>
+        <details>
+          <summary>How can I register?</summary>
+          <p>Fill in the registration form below and submit it.</p>
+        </details>
+      </section>
 
-    <section id="speakers">
-      <h2>Speakers</h2>
-      <p>Guest speakers will share ideas about technology and innovation.</p>
-      <p>Use <kbd>Tab</kbd> to move through the interactive elements.</p>
-      <p>The event uses <code>HTML</code> and <code>CSS</code> for its web page.</p>
-      <p>Our main event is <cite>CEREBRO 2026</cite>.</p>
-    </section>
-
-
-    <section>
-      <h2>Frequently Asked Questions</h2>
-      <details>
-        <summary>Who can participate?</summary>
-        <p>Students of IIIT Vadodara can participate in the events.</p>
-      </details>
-      <details>
-        <summary>How can I register?</summary>
-        <p>Fill in the registration form below and submit it.</p>
-      </details>
-    </section>
-
-
-    <!-- Lab 7: reads the SAME events from events.json (parsed with res.json())
+      <!-- Lab 7: reads the SAME events from events.json (parsed with res.json())
          and from events.xml (parsed with DOMParser). script.js fills these elements. -->
-    <section id="data-lab">
-      <h2>Data Formats Lab: JSON and XML</h2>
-      <div class="data-line" id="xml-title">Loading events.xml...</div>
-      <div class="data-line" id="roundtrip-result">Waiting for events.json...</div>
-      <div class="data-line" id="size-report">Waiting for file sizes...</div>
-      <details>
-        <summary>Show JSON.stringify(events, null, 2)</summary>
-        <pre id="roundtrip-output"></pre>
-      </details>
-    </section>
+      <section id="data-lab">
+        <h2>Data Formats Lab: JSON and XML</h2>
+        <div class="data-line" id="xml-title">Loading events.xml...</div>
+        <div class="data-line" id="roundtrip-result">
+          Waiting for events.json...
+        </div>
+        <div class="data-line" id="size-report">Waiting for file sizes...</div>
+        <details>
+          <summary>Show JSON.stringify(events, null, 2)</summary>
+          <pre id="roundtrip-output"></pre>
+        </details>
+      </section>
 
-
-    <section id="registration">
-      <h2>Event Registration</h2>
-      <!-- Lab 6 B8: "novalidate" turns OFF the browser's own popup so script.js can
+      <section id="registration">
+        <h2>Event Registration</h2>
+        <!-- Lab 6 B8: "novalidate" turns OFF the browser's own popup so script.js can
            run checkValidity() and show our messages next to each field.
            Built-in rules: required, type="email", pattern. Custom rule: setCustomValidity in script.js. -->
-      <form action="thankyou.html" novalidate>
-        <p><label for="name">Name</label></p>
-        <p>
-          <input id="name" name="name" type="text" required
-                 pattern="[A-Za-z][A-Za-z .'\-]*"
-                 title="Letters, spaces, dots, apostrophes and hyphens only, starting with a letter."
-                 placeholder="Name" aria-describedby="name-error">
-          <span class="field-error" id="name-error"></span>
-        </p>
+        <form action="thankyou.html" novalidate>
+          <p><label for="name">Name</label></p>
+          <p>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              pattern="[A-Za-z][A-Za-z .'\-]*"
+              title="Letters, spaces, dots, apostrophes and hyphens only, starting with a letter."
+              placeholder="Name"
+              aria-describedby="name-error"
+            />
+            <span class="field-error" id="name-error"></span>
+          </p>
 
-        <p><label for="email">Email</label></p>
-        <p>
-          <input id="email" name="email" type="email" required
-                 pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
-                 title="Enter an email like name@example.com"
-                 placeholder="Email" aria-describedby="email-error">
-          <span class="field-error" id="email-error"></span>
-        </p>
+          <p><label for="email">Email</label></p>
+          <p>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
+              title="Enter an email like name@example.com"
+              placeholder="Email"
+              aria-describedby="email-error"
+            />
+            <span class="field-error" id="email-error"></span>
+          </p>
 
-        <p><label for="dob">Date of Birth</label></p>
-        <p>
-          <input id="dob" name="dob" type="date" required aria-describedby="dob-error">
-          <span class="field-error" id="dob-error"></span>
-        </p>
+          <p><label for="dob">Date of Birth</label></p>
+          <p>
+            <input
+              id="dob"
+              name="dob"
+              type="date"
+              required
+              aria-describedby="dob-error"
+            />
+            <span class="field-error" id="dob-error"></span>
+          </p>
 
-        <p><label for="event">Choose an event</label></p>
-        <p>
-          <!-- values match the "id" field in events.json, so an RSVP button can pre-select its event -->
-          <select id="event" name="event">
-            <option value="hackathon">Internal Hackathon</option>
-            <option value="quiz">Maths Quiz</option>
-            <option value="drama">Drama Play</option>
-          </select>
-          <span class="field-error" id="event-error"></span>
-        </p>
-        <button type="submit">Submit Registration</button>
-      </form>
-    </section>
+          <p><label for="event">Choose an event</label></p>
+          <p>
+            <!-- values match the "id" field in events.json, so an RSVP button can pre-select its event -->
+            <select id="event" name="event">
+              <option value="hackathon">Internal Hackathon</option>
+              <option value="quiz">Maths Quiz</option>
+              <option value="drama">Drama Play</option>
+            </select>
+            <span class="field-error" id="event-error"></span>
+          </p>
+          <button type="submit">Submit Registration</button>
+        </form>
+      </section>
 
+      <figure>
+        <img
+          src="IIIT_VADODARA_LOGO.png"
+          alt="IIIT Vadodara logo"
+          width="100"
+        />
+        <figcaption>IIIT Vadodara</figcaption>
+      </figure>
+    </main>
 
-    <figure>
-      <img src="IIIT_VADODARA_LOGO.png" alt="IIIT Vadodara logo" width="100">
-      <figcaption>IIIT Vadodara</figcaption>
-    </figure>
-  </main>
+    <footer>
+      <p>IIIT Vadodara, Sector 28, Gandhinagar, Gujarat, India</p>
+      <address>Email: info@iiitvadodara.ac.in</address>
+      <nav>
+        <ul class="footer-links">
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#events">Events</a></li>
+          <li>
+            <a href="https://iiitvadodara.ac.in" target="_blank" rel="noopener"
+              >Official Website</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
 
-
-  <footer>
-    <p>IIIT Vadodara, Sector 28, Gandhinagar, Gujarat, India</p>
-    <address>Email: info@iiitvadodara.ac.in</address>
-    <nav>
-      <ul class="footer-links">
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="https://iiitvadodara.ac.in" target="_blank" rel="noopener">Official Website</a></li>
-      </ul>
-    </nav>
-  </footer>
-
-  <!-- Lab 6 A1: script linked just before </body>; defer = run after the HTML is parsed -->
-  <script src="script.js" defer></script>
-</body>
+    <!-- Lab 6 A1: script linked just before </body>; defer = run after the HTML is parsed -->
+    <script src="script.js" defer></script>
+  </body>
 </html>
